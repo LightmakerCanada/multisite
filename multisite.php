@@ -85,15 +85,15 @@ class WP_JSON_Multisite {
       return $args;
     }
 
-    if ( is_numeric( $args['json_site'] ) ) {
-      $site_id = absint( $args['json_site'] );
+    if ( is_numeric( $args['site'] ) ) {
+      $site_id = absint( $args['site'] );
     }
     else {
-      $site_id = get_id_from_blogname( $args['json_site'] );
+      $site_id = get_id_from_blogname( $args['site'] );
     }
 
     if ( ! $site_id ) {
-      return WP_Error( 'json_multisite_invalid_site', __( 'Invalid site specified' ), array( 'status' => 404 ) );
+      return new WP_Error( 'json_multisite_invalid_site', __( 'Invalid site specified' ), array( 'status' => 404 ) );
     }
 
     // Perform the actual switch
