@@ -1,10 +1,10 @@
 <?php
 /**
  * Plugin Name: JSON REST API for Multisite
- * Description: Enable the JSON-based REST API for your sites!
- * Author: Ryan McCue
- * Author URI: http://ryanmccue.info/
- * Version: 0.1
+ * Description: Based on original code by Ryan McCue.
+ * Author: Adam Biggs
+ * Author URI: http://lightmaker.com
+ * Version: 0.1.1
  */
 
 if ( ! is_multisite() )
