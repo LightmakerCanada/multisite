@@ -13,6 +13,7 @@ if ( ! is_multisite() )
 $wp_json_multisite = new WP_JSON_Multisite();
 
 class WP_JSON_Multisite {
+
   /**
    * Original endpoints before prefixing
    *
@@ -27,6 +28,7 @@ class WP_JSON_Multisite {
    */
   protected $prefix = '/sites/(?P<site>[\w.]+)';
 
+
   /**
    * Register our hooks
    */
@@ -34,6 +36,7 @@ class WP_JSON_Multisite {
     add_filter( 'json_endpoints', array( $this, 'change_endpoints' ), 1000 );
     add_filter( 'json_dispatch_args', array( $this, 'switch_to_blog' ), 1000 );
   }
+
 
   /**
    * Change the endpoints to suit multisite
@@ -73,6 +76,7 @@ class WP_JSON_Multisite {
     return $routes;
   }
 
+
   /**
    * Switch to the correct site when routing
    *
@@ -102,6 +106,7 @@ class WP_JSON_Multisite {
     return $args;
   }
 
+
   /**
    * Get all sites with a subset of their data
    *
@@ -111,8 +116,15 @@ class WP_JSON_Multisite {
     return new WP_Error( 'json_multisite_not_implemented', __( 'Not implemented' ), array( 'status' => 501 ) );
   }
 
+
+  /**
+   * Get details about a specifc site by it's ID
+   *
+   * @return array
+   */
   public function getSite( $site ) {
-    return get_blog_details();
+    //return get_blog_details();
+    return wp_load_alloptions();
   }
 
   /**
