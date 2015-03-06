@@ -127,6 +127,24 @@ class WP_JSON_Multisite {
     return wp_load_alloptions();
   }
 
+
+  /**
+   * Create a new site
+   *
+   * @param array $data POSTed site data
+   * @return int The new site's ID
+   */
+  public function newSite( $data ) {
+    $domain  = $data['domain'];
+    $path    = $data['path'];
+    $title   = $data['title'];
+    $user_id = $data['user_id'];
+    $meta    = $data['meta'];
+    $site_id = $data['site_id'];
+    return wpmu_create_blog( $domain, $path, $title, $user_id, $meta, $site_id );
+  }
+
+
   /**
    * Edit a site's details
    *
