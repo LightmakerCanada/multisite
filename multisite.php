@@ -139,8 +139,9 @@ class WP_JSON_Multisite {
     $path    = $data['path'];
     $title   = $data['title'];
     $user_id = $data['user_id'];
-    $site_id = $data['site_id'];
+    //$user_id = get_current_user_id();
     $meta    = array( 'public' => 1 );
+    $site_id = 1; // Needs to be the ID of the main site.
     return wpmu_create_blog( $domain, $path, $title, $user_id, $meta, $site_id );
   }
 
